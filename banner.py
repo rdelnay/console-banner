@@ -484,6 +484,7 @@ alphabet = {
           'e0',
           'fe',
           '00'],
+    # TODO: add numbers 3-9
     '.': ['00',
           '00',
           '00',
