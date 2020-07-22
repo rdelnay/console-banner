@@ -1,544 +1,106 @@
-# JUNK I DONT WANT TO GET RID OF YET
-# for x in range(0,4):
-#     for y in range(0,4):
-#         print('X', end='')
-#     print('\n', end='')
+# chars = '386cc6c6fec6c600'
 
-# s = "9096"
-# for i in s:
-#     b = str('{0:04b}'.format(int(i)))
-#     for num in b:
-#         if num == '1':
-#             print("X", end='')
-#         else:
-#             print(" ", end='')
-#     print("")
+# def print_letter(letter):
+#     a = 0
+#     b = 2
+#     for i in range(8):
+#         print(letter[a:b])
+#         a+=2
+#         b+=2
 
-# for item in alphabet.get('E'):
-#     b = str('{0:08b}'.format(int(item, 16)))
-#     for num in b:
-#         if num == '1':
-#             print("█", end='')
-#         else:
-#             print("░", end='')
-#     print("")
+# print_letter(chars)
 
-# def line(layer):
-#     a = ''
+# def print_line(layer_number, phrase):
 #     for i in phrase:
-#         alphabet.get(str(i))
-
-# i = 'A'
-# print(
-#     alphabet['A'][0]
-# )
-
-
-import time
-alphabet = {
-    'A': ['38',
-          '6c',
-          'c6',
-          'c6',
-          'fe',
-          'c6',
-          'c6',
-          '00'],
-    'B': ['fc',
-          'c6',
-          'c6',
-          'fc',
-          'c6',
-          'c6',
-          'fc',
-          '00'],
-    'C': ['3c',
-          '66',
-          'c0',
-          'c0',
-          'c0',
-          '66',
-          '3c',
-          '00'],
-    'D': ['f8',
-          'cc',
-          'c6',
-          'c6',
-          'c6',
-          'cc',
-          'f8',
-          '00'],
-    'E': ['fe',
-          'c0',
-          'c0',
-          'fc',
-          'c0',
-          'c0',
-          'fe',
-          '00'],
-    'F': ['fe',
-          'c0',
-          'c0',
-          'fc',
-          'c0',
-          'c0',
-          'c0',
-          '00',],
-    'G': ['3e',
-          '60',
-          'c0',
-          'ce',
-          'c6',
-          '66',
-          '3e',
-          '00'],
-    'H': ['c6',
-          'c6',
-          'c6',
-          'fe',
-          'c6',
-          'c6',
-          'c6',
-          '00'],
-    'I': ['7e',
-          '18',
-          '18',
-          '18',
-          '18',
-          '18',
-          '7e',
-          '00'],
-    'J': ['06',
-          '06',
-          '06',
-          '06',
-          '06',
-          'c6',
-          '7c',
-          '00'],
-    'K': ['c6',
-          'cc',
-          'd8',
-          'f0',
-          'f8',
-          'dc',
-          'ce',
-          '00'],
-    'L': ['60',
-          '60',
-          '60',
-          '60',
-          '60',
-          '60',
-          '7e',
-          '00'],
-    'M': ['c6',
-          'ee',
-          'fe',
-          'fe',
-          'd6',
-          'c6',
-          'c6',
-          '00'],
-    'N': ['c6',
-          'e6',
-          'f6',
-          'fe',
-          'de',
-          'ce',
-          'c6',
-          '00'],
-    'O': ['7c',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          '7c',
-          '00'],
-    'P': ['fc',
-          'c6',
-          'c6',
-          'c6',
-          'fc',
-          'c0',
-          'c0',
-          '00'],
-    'Q': ['7c',
-          'c6',
-          'c6',
-          'c6',
-          'de',
-          'cc',
-          '7a',
-          '00'],
-    'R': ['fc',
-          'c6',
-          'c6',
-          'ce',
-          'f8',
-          'dc',
-          'c6',
-          '00'],
-    'S': ['78',
-          'cc',
-          'c0',
-          '7c',
-          '06',
-          'c6',
-          '7c',
-          '00'],
-    'T': ['7e',
-          '18',
-          '18',
-          '18',
-          '18',
-          '18',
-          '18',
-          '00'],
-    'U': ['c6',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          '7c',
-          '00'],
-    'V': ['c6',
-          'c6',
-          'c6',
-          'ee',
-          '7c',
-          '38',
-          '10',
-          '00'],
-    'W': ['c6',
-          'c6',
-          'd6',
-          'fe',
-          'fe',
-          'ee',
-          'c6',
-          '00'],
-    'X': ['c6',
-          'ee',
-          '7c',
-          '38',
-          '7c',
-          'ee',
-          'c6',
-          '00'],
-    'Y': ['66',
-          '66',
-          '66',
-          '3c',
-          '18',
-          '18',
-          '18',
-          '00'],
-    'Z': ['fe',
-          '0e',
-          '1c',
-          '38',
-          '70',
-          'e0',
-          'fe',
-          '00'],
-    ' ': ['00',
-          '00',
-          '00',
-          '00',
-          '00',
-          '00',
-          '00',
-          '00',],
-    'a': ['00',
-          '00',
-          '7c',
-          '06',
-          '7e',
-          'c6',
-          '7e',
-          '00'],
-    'b': ['c0',
-          'c0',
-          'fc',
-          'c6',
-          'c6',
-          'c6',
-          '7c',
-          '00'],
-    'c': ['00',
-          '00',
-          '7e',
-          'c0',
-          'c0',
-          'c0',
-          '7e',
-          '00'],
-    'd': ['06',
-          '06',
-          '7e',
-          'c6',
-          'c6',
-          'c6',
-          '7e',
-          '00'],
-    'e': ['00',
-          '00',
-          '7c',
-          'c6',
-          'fe',
-          'c0',
-          '7c',
-          '00'],
-    'f': ['0e',
-          '18',
-          '7e',
-          '18',
-          '18',
-          '18',
-          '18',
-          '00'],
-    'g': ['00',
-          '00',
-          '7e',
-          'c6',
-          'c6',
-          '7e',
-          '06',
-          '7c'],
-    'h': ['c0',
-          'c0',
-          'fc',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          '00'],
-    'i': ['18',
-          '00',
-          '38',
-          '18',
-          '18',
-          '18',
-          '7e',
-          '00'],
-    'j': ['0c',
-          '00',
-          '1c',
-          '0c',
-          '0c',
-          '0c',
-          '0c',
-          '78'],
-    'k': ['c0',
-          'c0',
-          'ce',
-          'f8',
-          'f8',
-          'dc',
-          'ce',
-          '00'],
-    'l': ['38',
-          '18',
-          '18',
-          '18',
-          '18',
-          '18',
-          '7e',
-          '00'],
-    'm': ['00',
-          '00',
-          'fc',
-          'b6',
-          'b6',
-          'b6',
-          'b6',
-          '00'],
-    'n': ['00',
-          '00',
-          'fc',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          '00'],
-    'o': ['00',
-          '00',
-          '7c',
-          'c6',
-          'c6',
-          'c6',
-          '7c',
-          '00'],
-    'p': ['00',
-          '00',
-          'fc',
-          'c6',
-          'c6',
-          'fc',
-          'c0',
-          'c0'],
-    'q': ['00',
-          '00',
-          '7e',
-          'c6',
-          'c6',
-          '7e',
-          '06',
-          '06'],
-    'r': ['00',
-          '00',
-          '6e',
-          '70',
-          '60',
-          '60',
-          '60',
-          '00'],
-    's': ['00',
-          '00',
-          '7c',
-          'c0',
-          '7c',
-          '06',
-          'fc',
-          '00'],
-    't': ['18',
-          '18',
-          '7e',
-          '18',
-          '18',
-          '18',
-          '18',
-          '00'],
-    'u': ['00',
-          '00',
-          'c6',
-          'c6',
-          'c6',
-          'c6',
-          '7e',
-          '00'],
-    'v': ['00',
-          '00',
-          '66',
-          '66',
-          '66',
-          '3c',
-          '18',
-          '00'],
-    'w': ['00',
-          '00',
-          'b6',
-          'b6',
-          'b6',
-          'b6',
-          '7e',
-          '00'],
-    'x': ['00',
-          '00',
-          'c6',
-          'fe',
-          '38',
-          'fe',
-          'c6',
-          '00'],
-    'y': ['00',
-          '00',
-          'c6',
-          'c6',
-          'c6',
-          '7e',
-          '06',
-          '7c'],
-    'z': ['00',
-          '00',
-          'fe',
-          '1c',
-          '38',
-          '70',
-          'fe',
-          '00'],
-    '0': ['38',
-          '4c',
-          'c6',
-          'c6',
-          'c6',
-          '64',
-          '38',
-          '00'],
-    '1': ['18',
-          '38',
-          '18',
-          '18',
-          '18',
-          '18',
-          '7e',
-          '00'],
-    '2': ['7c',
-          'c6',
-          '0e',
-          '3c',
-          '78',
-          'e0',
-          'fe',
-          '00'],
-    # TODO: add numbers 3-9
-    '.': ['00',
-          '00',
-          '00',
-          '00',
-          '00',
-          '00',
-          '18',
-          '18'],
-    '!': ['18',
-          '3c',
-          '3c',
-          '3c',
-          '18',
-          '18',
-          '00',
-          '18'],
-    '-': ['00',
-          '00',
-          '00',
-          '7e',
-          '7e',
-          '00',
-          '00',
-          '00'],
-    '*': ['00',
-          '00',
-          '44',
-          '28',
-          '10',
-          '28',
-          '44',
-          '00']
-
-}
+#         b = str('{0:08b}'.format(int(alphabet[i][layer_number], 16)))
+#         for num in b:
+#             # time.sleep(.05)
+#             if num == '1':
+#                 print("█", end='') #█
+#             else:
+#                 print("░", end='') #░
+#     print('')
+#     b = ''
 
 
-def print_line(layer_number, phrase):
-    for i in phrase:
-        b = str('{0:08b}'.format(int(alphabet[i][layer_number], 16)))
-        for num in b:
-            # time.sleep(.05)
-            if num == '1':
-                print("█", end='') #█
-            else:
-                print("░", end='') #░
-    print('')
-    b = ''
+# def print_phrase(phrase):
+#     for i in range(0,8):
+#         print_line(i, phrase)
+
+compressed_alphabet = '386cc6c6fec6c600\
+fcc6c6fcc6c6fc00\
+3c66c0c0c0663c00\
+f8ccc6c6c6ccf800\
+fec0c0fcc0c0fe00\
+fec0c0fcc0c0c000\
+3e60c0cec6663e00\
+c6c6c6fec6c6c600\
+7e18181818187e00\
+0606060606c67c00\
+c6ccd8f0f8dcce00\
+6060606060607e00\
+c6eefefed6c6c600\
+c6e6f6fedecec600\
+7cc6c6c6c6c67c00\
+fcc6c6c6fcc0c000\
+7cc6c6c6decc7a00\
+fcc6c6cef8dcc600\
+78ccc07c06c67c00\
+7e18181818181800\
+c6c6c6c6c6c67c00\
+c6c6c6ee7c381000\
+c6c6d6fefeeec600\
+c6ee7c387ceec600\
+6666663c18181800\
+fe0e1c3870e0fe00\
+0000000000000000\
+00007c067ec67e00\
+c0c0fcc6c6c67c00\
+00007ec0c0c07e00\
+06067ec6c6c67e00\
+00007cc6fec07c00\
+0e187e1818181800\
+00007ec6c67e067c\
+c0c0fcc6c6c6c600\
+1800381818187e00\
+0c001c0c0c0c0c78\
+c0c0cef8f8dcce00\
+3818181818187e00\
+0000fcb6b6b6b600\
+0000fcc6c6c6c600\
+00007cc6c6c67c00\
+0000fcc6c6fcc0c0\
+00007ec6c67e0606\
+00006e7060606000\
+00007cc07c06fc00\
+18187e1818181800\
+0000c6c6c6c67e00\
+00006666663c1800\
+0000b6b6b6b67e00\
+0000c6fe38fec600\
+0000c6c6c67e067c\
+0000fe1c3870fe00'
 
 
-def print_phrase(phrase):
-    for i in range(0,8):
-        print_line(i, phrase)
+def print_better_letter(letter):
+      pos = (ord(letter)-65)*16 # gets position of the letter within the compressed alphabet
+      for i in range(8): # goes through the height of the letter
+            piece = compressed_alphabet[pos:pos+2] # grabs a substring (2 chars, or one lines worth) of the letters compressed form
+            line = str('{0:08b}'.format(int(piece, 16))) # converts the hex to binary
+            for x in line: # prints the respective symbol from the binary
+                  if x == "0":
+                        print('░', end='')
+                  elif x == "1":
+                        print('█', end='')
+            print("")
+            pos = pos + 2 # move the position to the next substring of 2 chars
 
-try:
-    print_phrase(input('Enter Phrase: '))
-except:
-      print('Please use only uppercase and lowercase letters.')
+def vert_banner(letters):
+      for i in letters:
+            print_better_letter(i)
+
+def get_alphabet_codes():
+      for i in alphabet.values():
+            for x in i:
+                  print(str(x), end='')
+            print('')
