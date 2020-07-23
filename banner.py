@@ -1,32 +1,3 @@
-# chars = '386cc6c6fec6c600'
-
-# def print_letter(letter):
-#     a = 0
-#     b = 2
-#     for i in range(8):
-#         print(letter[a:b])
-#         a+=2
-#         b+=2
-
-# print_letter(chars)
-
-# def print_line(layer_number, phrase):
-#     for i in phrase:
-#         b = str('{0:08b}'.format(int(alphabet[i][layer_number], 16)))
-#         for num in b:
-#             # time.sleep(.05)
-#             if num == '1':
-#                 print("█", end='') #█
-#             else:
-#                 print("░", end='') #░
-#     print('')
-#     b = ''
-
-
-# def print_phrase(phrase):
-#     for i in range(0,8):
-#         print_line(i, phrase)
-
 compressed_alphabet = '386cc6c6fec6c600\
 fcc6c6fcc6c6fc00\
 3c66c0c0c0663c00\
@@ -80,11 +51,21 @@ c0c0cef8f8dcce00\
 0000c6fe38fec600\
 0000c6c6c67e067c\
 0000fe1c3870fe00'
+# ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 
+def get_position(letter,layer_number=0): # messed up the character set early on so I had to add a few extra special cases
+      orig_position = ord(letter)
+      if orig_position == 32: # accommodate for <space> out of order of the normal ascii char set
+            orig_position = 39
+      elif orig_position >= 97: # accommodate for lowercase out of the normal ascii char set
+            orig_position -= 5
+      pos = abs(orig_position-65)*16+(layer_number*2)
+      return pos
 
-def print_better_letter(letter):
-      pos = (ord(letter)-65)*16 # gets position of the letter within the compressed alphabet
-      for i in range(8): # goes through the height of the letter
+def print_letter(letter):
+      letter = letter[0] # limit input the first char
+      pos = get_position(letter)
+      for _ in range(8): # goes through the height of the letter
             piece = compressed_alphabet[pos:pos+2] # grabs a substring (2 chars, or one lines worth) of the letters compressed form
             line = str('{0:08b}'.format(int(piece, 16))) # converts the hex to binary
             for x in line: # prints the respective symbol from the binary
@@ -95,12 +76,39 @@ def print_better_letter(letter):
             print("")
             pos = pos + 2 # move the position to the next substring of 2 chars
 
+def print_better_line(phrase:str,layer_number):
+      for letter in phrase:
+            pos = get_position(letter,layer_number)
+            piece = compressed_alphabet[pos:pos+2] # grabs the 2 char string it needs based on the position
+            line = str('{0:08b}'.format(int(piece, 16))) # converts the hex piece to binary
+            for x in line: # prints the respective symbol from the binary
+                  if x == "0":
+                        print('░', end='')
+                  elif x == "1":
+                        print('█', end='')
+      print('')
+
+def print_phrase(phrase):
+      for i in range(8):
+            print_better_line(phrase,i)
+
 def vert_banner(letters):
       for i in letters:
-            print_better_letter(i)
+            print_letter(i)
 
-def get_alphabet_codes():
-      for i in alphabet.values():
-            for x in i:
-                  print(str(x), end='')
-            print('')
+# old version, don't use (messed up on lowercase z, something was probably misalligned somewhere)
+# should probably delete tbh
+def get_position_old(letter,layer_number=0):
+      orig_position = ord(letter)
+      if orig_position == 32:
+            pos = 416
+      elif orig_position >= 97:
+            orig_position -= 58
+            pos = (orig_position-65)*16+(layer_number*2)
+      else:
+            pos = (orig_position-65)*16+(layer_number*2)
+      return pos
+
+# TESTS
+#print_letter(' ')
+print_phrase('test')
