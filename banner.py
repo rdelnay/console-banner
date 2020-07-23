@@ -53,7 +53,8 @@ c0c0cef8f8dcce00\
 0000fe1c3870fe00'
 # ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 
-def get_position(letter,layer_number=0): # messed up the character set early on so I had to add a few extra special cases
+# messed up the character set early on so I had to add a few extra special cases
+def get_position(letter,layer_number=0):
       orig_position = ord(letter)
       if orig_position == 32: # accommodate for <space> out of order of the normal ascii char set
             orig_position = 39
@@ -76,7 +77,7 @@ def print_letter(letter):
             print("")
             pos = pos + 2 # move the position to the next substring of 2 chars
 
-def print_better_line(phrase:str,layer_number):
+def print_line(phrase:str,layer_number):
       for letter in phrase:
             pos = get_position(letter,layer_number)
             piece = compressed_alphabet[pos:pos+2] # grabs the 2 char string it needs based on the position
@@ -90,7 +91,7 @@ def print_better_line(phrase:str,layer_number):
 
 def print_phrase(phrase):
       for i in range(8):
-            print_better_line(phrase,i)
+            print_line(phrase,i)
 
 def vert_banner(letters):
       for i in letters:
